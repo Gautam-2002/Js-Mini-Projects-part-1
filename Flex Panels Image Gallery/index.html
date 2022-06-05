@@ -88,6 +88,11 @@
       font-size: 40px;
       flex: 5;
     }
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
 
   </style>
 
@@ -121,6 +126,19 @@
   </div>
 
   <script>
+    const Panels = document.querySelectorAll('.panel');
+
+    function toggleOpen(){
+      this.classList.toggle('open');
+    }
+    function toggleActive(e){
+      if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active');
+      }
+    }
+
+    Panels.forEach(panel => panel.addEventListener('click',toggleOpen));
+    Panels.forEach(panel => panel.addEventListener('transitionend',toggleActive));
 
   </script>
 
